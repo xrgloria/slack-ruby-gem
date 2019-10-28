@@ -40,6 +40,18 @@ module Slack
       end
 
       #
+      # Find a user with an email address.
+      #
+      # @option options [Object] :email
+      #   An email address belonging to a user in the workspace.
+      # @see https://api.slack.com/methods/users.lookupByEmail
+      # @see https://github.com/slack-ruby/slack-api-ref/blob/master/methods/users/users.lookupByEmail.json
+      def users_lookupByEmail(options = {})
+        throw ArgumentError.new('Required arguments :email missing') if options[:email].nil?
+        post("users.lookupByEmail", options)
+      end
+
+      #
       # Marks a user as active.
       #
       # @see https://api.slack.com/methods/users.setActive
