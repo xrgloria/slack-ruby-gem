@@ -33,8 +33,10 @@ module Slack
           request.path = path
           request.body = options unless options.empty?
         end
+        request.headers['Authorization'] = "Bearer #{token}" if token
       end
-      return response.body
+      
+      response.body
     end
   end
 end
