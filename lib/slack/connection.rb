@@ -19,6 +19,7 @@ module Slack
         connection.use Faraday::Response::ParseJson
         connection.use FaradayMiddleware::RaiseHttpException
         connection.adapter(adapter)
+        connection.request :authorization, 'Bearer', token
       end
     end
   end
